@@ -29,6 +29,7 @@ Topology
 --------
 
 We use the simple dumbbell network. The topology is shown in the following figure:
+<pre>
                          N1                      N4
                            \                    /
                             \                  /
@@ -36,6 +37,7 @@ We use the simple dumbbell network. The topology is shown in the following figur
                             /                  \
                            /                    \
                          N5                      N6
+</pre>
 
 
 
