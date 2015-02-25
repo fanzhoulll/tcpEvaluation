@@ -50,7 +50,7 @@ Experiments methologies
 In this experiment, we study the performance of single TCP flow under congestion. Four different TCP flavours are studied in this experiment: Tahoe, Reno, NewReno and Vegas. Here we does not change the bandwidth of bottleneck link bandwidth, instead, we add a CBR flow between N2 and N3 to change the available bandwidth for TCP flow. The varying parameters and corresponding performance metrics are listed in following table (for one TCP):
 
 Available Bandwidth  | Throughput | Link utilization | Average Latency | Packet drop rate
--------------------- | ---------- | ---------------- | ------- | --------------- |
+-------------------- | ---------- | ---------------- | --------------- | --------------- |
 2Mbps  | | | | 
 4Mbps  | | | | 
 8Mbps  | | | | 
@@ -72,7 +72,7 @@ f = (x1+x2+..xn)^2/n*(x1^2+x2^2+....xn^2)
 f is the fairness index, xi is the throughput of i’th flow. Notice that fairness itself is a very complex topic. Here we only study protocol-fairness, i.e, compare the performance of different protocols (Reno/Reno, NewReno/Reno, Vegas/Vegas,NewReno/Vegas) with the same RTT. We do not consider RTT fairness here. The parameters and performance metrics we are going to measure are listed as followings:
 
 Available Bandwidth  | Fairness index 
--------------------- | ----------
+-------------------- | --------------|
 2Mbps  |  
 4Mbps  |  
 8Mbps  | 
@@ -80,8 +80,8 @@ Available Bandwidth  | Fairness index
 The fairness index can only gives us very limit information. We are more interested in the dynamics of one TCP flow after another TCP flow joins. So more experiments will be done. For example we will plot real time throughput of two TCP flows with different starting time. An sample would be like:
 
 Protocol/Protocol  | Start time for flow 1 | Start time for flow 2  
--------------------- | ----------
-NewReno/Vegas  |  0 | 5s 
+------------------ | --------------------- | --------------------|
+NewReno/Vegas      |  0 | 5s 
 
 The questions to be answered are:
 1. Are the different combinations of variants fair to each other? 
@@ -105,7 +105,7 @@ First we study the performance of TCP NewReno and TCP Westwood+ in high packet l
 
 Protocol: NewReno/Westwood+
 Packet loss rate  | Throughput | Link utilization | Average Latency
--------------------- | ---------- | ---------------- | ------- 
+------------------| ---------- | ---------------- | ---------------| 
 1*10^(-6)  | | |  
 5*10^(-6)  | | | 
 1*10^(-5)  | | |  
@@ -116,7 +116,7 @@ Next we study the performance of TCP NewReno and TCP Cubic in high BDP network. 
 
 Protocol: NewReno/Westwood+
 Bottleneck Bandwidth  | Throughput | Link utilization | Average Latency
--------------------- | ---------- | ---------------- | ------- 
+--------------------- | ---------- | ---------------- | ---------------|
 10 Mbps  | | |  
 15 Mbps  | | | 
 20 Mbps  | | |  
