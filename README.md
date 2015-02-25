@@ -104,6 +104,7 @@ It has long been known that classical TCP protocols (Tahoe, Reno, NewReno) perfo
 First we study the performance of TCP NewReno and TCP Westwood+ in high packet loss rate network.
 
 Protocol: NewReno/Westwood+
+
 Packet loss rate  | Throughput | Link utilization | Average Latency
 ------------------| ---------- | ---------------- | ---------------| 
 1*10^(-6)  | | |  
@@ -115,6 +116,7 @@ Packet loss rate  | Throughput | Link utilization | Average Latency
 Next we study the performance of TCP NewReno and TCP Cubic in high BDP network. Notice in this experiments we only care the bottleneck bandwidth. We can set the bandwidth of other links to an arbitrarily high value, like 100 Mbps. Also, we assume the bottleneck buffer is always 1 BDP. 
 
 Protocol: NewReno/Cubic
+
 Available Bandwidth  | Throughput | Link utilization | Average Latency | Packet drop rate
 -------------------- | ---------- | ---------------- | --------------- | --------------- |
 10Mbps  | | | | 
