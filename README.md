@@ -51,6 +51,6 @@ In this experiment, we study the performance of single TCP flow under congestion
 
 Available Bandwidth  | Throughput | Link utilization | Latency | Packet drop rate
 -------------------- | ---------- | ---------------- | ------- | --------------- |
-2Mbps  | Content Cell  | Content Cell  | Content Cell  | Content Cell
-4Mbps  | Content Cell  | Content Cell  | Content Cell  | Content Cell
-8Mbps  | Content Cell  | Content Cell  | Content Cell  | Content Cell
+2Mbps  | | | | 
+4Mbps  | | | | 
+8Mbps  | | | | 
