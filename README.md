@@ -27,7 +27,6 @@ Here we use the simplest bulk sending model. The senders always have data to sen
 
 Topology
 --------
-
 We use the simple dumbbell network. The topology is shown in the following figure:
 <pre>
                          N1                      N4
@@ -38,9 +37,13 @@ We use the simple dumbbell network. The topology is shown in the following figur
                            /                    \
                          N5                      N6
 </pre>
+The bandwidth of all links are 10Mbps. The link between N2 and N3 is bottleneck link. We will add a constant bit rate flow between N2 and N3. By varying the bit rate of this CBR flow, we can simulate the TCP’s performance under congestion. 
 
+End-to-End latency
+------------------
+We assume that the link delay between N2 to N3 is 40ms and the link delay for all the other link is 5ms. This assumption is to simulate the performance of bottleneck link. The round trip time between N1 to N4 (or from N5 to N6) is therefore 100ms.
 
+Experiments methologies
+======================
 
-
-
-
+###Experiment 1: TCP Performance Under Congestion
