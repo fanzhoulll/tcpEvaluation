@@ -49,7 +49,8 @@ Experiments methologies
 ###Experiment 1: TCP Performance Under Congestion
 In this experiment, we study the performance of single TCP flow under congestion. Four different TCP flavours are studied in this experiment: Tahoe, Reno, NewReno and Vegas. Here we does not change the bandwidth of bottleneck link bandwidth, instead, we add a CBR flow between N2 and N3 to change the available bandwidth for TCP flow. The varying parameters and corresponding performance metrics are listed in following table (for one TCP):
 
-First Header  | Second Header
+Available Bandwidth  | Throughput | Link utilization | Latency | Packet drop rate
 ------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+2Mbps  | Content Cell
+4Mbps  | Content Cell
+8Mbps  | Content Cell
