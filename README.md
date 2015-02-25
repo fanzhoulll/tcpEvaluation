@@ -114,14 +114,14 @@ Packet loss rate  | Throughput | Link utilization | Average Latency
 
 Next we study the performance of TCP NewReno and TCP Cubic in high BDP network. Notice in this experiments we only care the bottleneck bandwidth. We can set the bandwidth of other links to an arbitrarily high value, like 100 Mbps. Also, we assume the bottleneck buffer is always 1 BDP. 
 
-Protocol: NewReno/Westwood+
-Bottleneck Bandwidth  | Throughput | Link utilization | Average Latency
---------------------- | ---------- | ---------------- | ---------------|
-10 Mbps  | | |  
-15 Mbps  | | | 
-20 Mbps  | | |  
-25 Mbps  | | |
-30 Mbps  | | |
+Protocol: NewReno/Cubic
+Available Bandwidth  | Throughput | Link utilization | Average Latency | Packet drop rate
+-------------------- | ---------- | ---------------- | --------------- | --------------- |
+10Mbps  | | | | 
+15Mbps  | | | | 
+20Mbps  | | | | 
+25Mbps  | | | |
+30Mbps  | | | |
 
 After this experiment, we hope two following questions could be answered:
 
