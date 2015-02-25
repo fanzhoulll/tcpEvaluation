@@ -21,7 +21,7 @@ methodology. For detailed description please refer to full paper.
 Simulation environment
 ----------------------
 Traffic
--------
+======
 Here we use the simplest bulk sending model. The senders always have data to send. We inject new packets in the sending buffer 
 as long as it is empty. The reason that to use this model is to study the performance of protocols while the bottleneck link is kept busy. 
 
