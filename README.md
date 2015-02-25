@@ -5,28 +5,29 @@
 
 Introduction
 ===========
-In this paper, we will discuss on the performance of different TCP protocols and how these performance are 
+In this paper, we will  the performance of different TCP protocols and how these performance are 
 influenced by varying networking environment. We are mainly interested in 4 problems:
 
 1. What is the overall performance (throughput, delay, etc) of single TCP flow?
-2. What is the fairness situation between two TCP flows?
+2. What is the fairness between two TCP flows?
 3. How will the queue management discipline influence the performance of TCP?
 4. What is the limitation of traditional TCP and what are possible solutions?
 
-To answer these four problems, many experiments are conducted. All experiments are done in NS2, which is the
-most popular network simulation tool developed by thousands researchers. Every experiment will be run for 100 
-seconds and at least 32 times to guarantee statistical significance. Next we will briefly introduce the experiments 
-methodology. For detailed description please refer to full paper. 
+To answer these problems, many experiments are conducted. All experiments are done in NS2, which used to be the
+most popular network simulation tool. Every experiment will be run for 100 
+seconds and at least 32 times to guarantee statistical significance. 
+
+Next we will briefly introduce the experiments methodology. For detailed description please refer to full paper. 
 
 Simulation environment
 ======================
 
 1. Traffic
--------
-Here we use the simplest bulk sending model. The senders always have data to send. We inject new packets in the sending bufferas long as it is empty. The reason that to use this model is to study the performance of protocols while the bottleneck link is kept busy. 
+----------
+Here we use the simplest bulk sending model. The senders always have data to send. We inject new packets in the sending bufferas long as it is empty. We use this model to study the performance of protocols while the bottleneck link is always busy. 
 
 2. Topology
---------
+-----------
 We use the simple dumbbell network. The topology is shown in the following figure:
 <pre>
                          N1                      N4
@@ -43,11 +44,15 @@ The bandwidth of all links are 10Mbps. The link between N2 and N3 is bottleneck 
 ------------------
 We assume that the link delay between N2 to N3 is 40ms and the link delay for all the other link is 5ms. This assumption is to simulate the performance of bottleneck link. The round trip time between N1 to N4 (or from N5 to N6) is therefore 100ms.
 
+4. Queue buffer
+------------------
+Due to the limiation of length, we are not going to study the influence of varying queue buffer in this report (though it is very important). We would set the queue buffer to be 1 BDP (bandwidth delay product).
+
 Experiments methologies
 ======================
 
 ###Experiment 1: TCP Performance Under Congestion
-In this experiment, we study the performance of single TCP flow under congestion. Four different TCP flavours are studied in this experiment: Tahoe, Reno, NewReno and Vegas. Here we does not change the bandwidth of bottleneck link bandwidth, instead, we add a CBR flow between N2 and N3 to change the available bandwidth for TCP flow. The varying parameters and corresponding performance metrics are listed in following table (for one TCP):
+In this experiment, we study the performance of single TCP flow under congestion. Four different TCP flavours are studied in this experiment: Tahoe, Reno, NewReno and Vegas. Here we does not change the bandwidth of bottleneck link bandwidth, instead, we add a CBR flow between N2 and N3 to change the available bandwidth for TCP flow. The varying parameters and  performance metrics are listed in following table (for each TCP mentioned above):
 
 Available Bandwidth  | Throughput | Link utilization | Average Latency | Packet drop rate
 -------------------- | ---------- | ---------------- | --------------- | --------------- |
@@ -65,11 +70,11 @@ Following questions will be answered:
 
 ###Experiment 2: Fairness Between TCP Variants
 
-In this experiment, we study the fairness between different TCP flows. We use Jain's fairness index to measure fairness. The equation is as followings:
+In this experiment, we study the fairness between different TCP flows. We use Jain's index to measure fairness. The equation is as followings:
 
 f = (x1+x2+..xn)^2/n*(x1^2+x2^2+....xn^2)
 
-f is the fairness index, xi is the throughput of i’th flow. Notice that fairness itself is a very complex topic. Here we only study protocol-fairness, i.e, compare the performance of different protocols (Reno/Reno, NewReno/Reno, Vegas/Vegas,NewReno/Vegas) with the same RTT. We do not consider RTT fairness here. The parameters and performance metrics we are going to measure are listed as followings:
+f is the fairness index, xi is the throughput of i’th flow. Notice that fairness itself is a very complex topic. Here we only study protocol-fairness, i.e, compare the fairness between different protocols (Reno/Reno, NewReno/Reno, Vegas/Vegas,NewReno/Vegas) with the same RTT. The parameters and performance metrics we are going to measure are listed as followings:
 
 Available Bandwidth  | Fairness index 
 -------------------- | --------------|
@@ -84,13 +89,14 @@ Protocol/Protocol  | Start time for flow 1 | Start time for flow 2
 NewReno/Vegas      |  0 | 5s 
 
 The questions to be answered are:
+
 1. Are the different combinations of variants fair to each other? 
 2. Are there combinations that are unfair, and if so, why is the combination unfair? 
 
 ###Experiment 3: Influence of Queuing
-The queuing discipline has significant influence to the performance of TCP. In this experiment, we will study two queuing methods: drop tail and random early detection. Two protocols used are Reno and SACK. We start the first TCP flow, then add another CBR flow (fixed bandwidth). Real time performance in terms of throughput and delay will be plotted for the TCP flow. Here we are not going to do the simulation with varying queue buffer and will simply assume it to be 1 BDP (bandwidth delay product)
+The queuing discipline has significant impact to the performance of TCP. In this experiment, we will study two queuing methods: drop tail and random early detection. Two protocols used are Reno and SACK. We start the first TCP flow, then add another CBR flow (fixed bandwidth). Real time performance in terms of throughput and delay will be plotted for the TCP flow. As stated above, we are not going to do the simulation with varying queue buffer and will simply assume it to be 1 BDP.
 
-The questions we are going to answer are:
+We are going to answer following questions:
 
 1. Does each queuing discipline provide fair bandwidth to each flow?
 2. How does the end-to-end latency for the flows differ between DropTail and RED?
@@ -101,7 +107,7 @@ The questions we are going to answer are:
 
 It has long been known that classical TCP protocols (Tahoe, Reno, NewReno) perform bad in lossy or high BDP network. In this experiment we will pick NewReno as the representation of classical TCP protocol and compare it with new variations of TCP in more challenging network conditions. The protocols are are going to study in this experiments are NewReno, Westwood+, and Cubic. Westwood+ is famous for its ability to fast recovery from non-congestion packet loss. Cubic is the default TCP protocol for Linux system and is known as its great performance in high BDP network. 
 
-First we study the performance of TCP NewReno and TCP Westwood+ in high packet loss rate network.
+First we study the performance of TCP NewReno and TCP Westwood+ with lossy link (like wireless network).
 
 Protocol: NewReno/Westwood+
 
@@ -127,5 +133,5 @@ Available Bandwidth  | Throughput | Link utilization | Average Latency | Packet 
 
 After this experiment, we hope two following questions could be answered:
 
-1. What is the bottleneck of classical TCP’s performance and how the new TCP protocols try to solve them?
+1. What are the problems faced by classical TCP’s performance and how new TCP varients try to solve them?
 2. Can we further improve the performance of TCP?
