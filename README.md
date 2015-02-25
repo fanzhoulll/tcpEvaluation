@@ -4,7 +4,7 @@
 
 
 Introduction
-------------
+===========
 In this paper, we will discuss on the performance of different TCP protocols and how these performance are 
 influenced by varying networking environment. We are mainly interested in 4 problems:
 
@@ -19,13 +19,23 @@ seconds and at least 32 times to guarantee statistical significance. Next we wil
 methodology. For detailed description please refer to full paper. 
 
 Simulation environment
-----------------------
+======================
+
 Traffic
-======
-Here we use the simplest bulk sending model. The senders always have data to send. We inject new packets in the sending buffer 
-as long as it is empty. The reason that to use this model is to study the performance of protocols while the bottleneck link is kept busy. 
+-------
+Here we use the simplest bulk sending model. The senders always have data to send. We inject new packets in the sending bufferas long as it is empty. The reason that to use this model is to study the performance of protocols while the bottleneck link is kept busy. 
 
+Topology
+--------
 
+We use the simple dumbbell network. The topology is shown in the following figure:
+                         N1                      N4
+                           \                    /
+                            \                  /
+                             N2--------------N3
+                            /                  \
+                           /                    \
+                         N5                      N6
 
 
 
